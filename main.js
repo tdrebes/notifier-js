@@ -1,5 +1,5 @@
-const {app, BrowserWindow, screen, ipcMain} = require('electron')
-const path = require('path')
+const { app, BrowserWindow, screen, ipcMain, Notification } = require('electron');
+const path = require('path');
 const Tray = require('./tray');
 
 const tray = new Tray();
@@ -13,19 +13,19 @@ function createNotificationWindow() {
   const notificationWindow = new BrowserWindow({
     x: displayWidth - 320,
     y: displayHeight - 200,
-    // height: 150,
-    // width: 300,
+    height: 150,
+    width: 300,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
       contextIsolation: false,
     },
     show: false,
-    // frame: false,
+    frame: false,
     alwaysOnTop: true,
     minimizable: false,
     maximizable: false,
-    // resizable: false,
+    resizable: false,
     skipTaskbar: true,
     backgroundColor: '#083144',
   });
@@ -40,7 +40,7 @@ function createNotificationWindow() {
     currentNotificationWindow = notificationWindow;
 
     notificationWindow.showInactive();
-  })
+  });
 
   return notificationWindow;
 }
@@ -49,22 +49,24 @@ app.whenReady().then(() => {
   tray.render();
 });
 
-app.on('window-all-closed', (e) => e.preventDefault())
+app.on('window-all-closed', (e) => e.preventDefault());
 
 tray.on('exit', () => {
   app.quit();
-})
+});
 
 tray.on('create-test-notification', () => {
   console.log('Test notification triggered.');
   createNotificationWindow();
-})
+});
 
 ipcMain.on('action_close', (event, arg) => {
-  console.log('closing');
-  console.log(arg);
-})
+  if (currentNotificationWindow !== null) {
+    currentNotificationWindow.close();
+    console.log('Notification closed.');
+  }
+});
 
 ipcMain.on('log', (event, arg) => {
   console.log(arg);
-})
+});
