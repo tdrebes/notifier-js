@@ -1,0 +1,44 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    user-select: none;
+    margin-left: auto;
+}
+
+.main_container {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.notification_title {
+    color: #eb5b24;
+    font-family: 'Lubalin Book', sans-serif;
+}
+
+.notification_text {
+    color: #ffffff;
+    font-family: 'Akzidenz Grotesk Reg', sans-serif;
+}
+
+.notification_actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-left: 20px;
+    margin-right: 20px;
+    font-family: sans-serif;
+}
+
+.notification_action {
+    display: block;
+    height: 35px;
+    width: 35px;
+    color: #ffffff;
+    margin-left: 15px;
+}
+
+.notification_action :hover {
+    color: #eb5b24;
+}
