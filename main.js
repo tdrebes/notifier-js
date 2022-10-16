@@ -50,6 +50,14 @@ function createNotificationWindow() {
     notificationWindow.showInactive();
   });
 
+  setTimeout(() => {
+    if (!notificationWindow.isDestroyed()) {
+      // Uncomment to close notifications after timeout
+      // notificationWindow.destroy(); 
+      //console.log('Notification closed by timeout');
+    }
+  }, 10000)
+
   return notificationWindow;
 }
 
@@ -78,7 +86,7 @@ tray.on('create-test-notification-windows', () => {
 
 ipcMain.on('action_close', (event, arg) => {
   if (currentNotificationWindow !== null) {
-    currentNotificationWindow.close();
+    currentNotificationWindow.destroy();
     console.log('Notification closed.');
   }
 });
