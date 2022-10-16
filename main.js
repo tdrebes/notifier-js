@@ -4,6 +4,9 @@ const Tray = require('./tray');
 
 const tray = new Tray();
 
+const NOTIFICATION_TITLE = 'Notification'
+const NOTIFICATION_BODY = 'This is the content of a notification.'
+
 let currentNotificationWindow = null;
 
 function createNotificationWindow() {
@@ -56,9 +59,17 @@ tray.on('exit', () => {
 });
 
 tray.on('create-test-notification', () => {
-  console.log('Test notification triggered.');
+  console.log('Test Notification triggered.');
   createNotificationWindow();
 });
+
+tray.on('create-test-notification-windows', () => {
+  console.log('Test Notification (Windows) triggered.')
+  new Notification({
+    title: NOTIFICATION_TITLE,
+    body: NOTIFICATION_BODY,
+  }).show();
+})
 
 ipcMain.on('action_close', (event, arg) => {
   if (currentNotificationWindow !== null) {

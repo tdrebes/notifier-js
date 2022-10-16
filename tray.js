@@ -31,6 +31,11 @@ class Tray {
             },
             {
                 type: 'normal',
+                label: 'Create Test-Notification (Windows)',
+                click: this.onCreateTestNotificationWindowsClicked.bind(this)
+            },
+            {
+                type: 'normal',
                 label: 'Create Test-Notification',
                 click: this.onCreateTestNotificationClicked.bind(this)
             },
@@ -64,6 +69,10 @@ class Tray {
 
     onCreateTestNotificationClicked() {
         this.eventEmitter.emit('create-test-notification');
+    }
+    
+    onCreateTestNotificationWindowsClicked() {
+        this.eventEmitter.emit('create-test-notification-windows');
     }
 }
 

@@ -1,13 +1,12 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "notifier",
+  "version": "0.1.0",
+  "description": "An application to show notifications in Windows",
   "main": "main.js",
   "type": "commonjs",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -15,9 +14,9 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "ElectronicMinds",
   "devDependencies": {
-    "electron": "^21.1.1"
+    "electron": "^21.1.1",
+    "electron-builder": "^23.6.0"
   }
 }
