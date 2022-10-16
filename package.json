@@ -8,13 +8,6 @@
     "start": "electron .",
     "dist:windows": "electron-builder --win"
   },
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
   "author": "ElectronicMinds",
   "devDependencies": {
     "electron": "^21.1.1",
