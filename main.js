@@ -2,6 +2,11 @@ const { app, BrowserWindow, screen, ipcMain, Notification } = require('electron'
 const path = require('path');
 const Tray = require('./tray');
 
+if (process.platform === 'win32')
+{
+    app.setAppUserModelId('Notifier');
+}
+
 const tray = new Tray();
 
 const NOTIFICATION_TITLE = 'Notification'

@@ -5,7 +5,8 @@
   "main": "main.js",
   "type": "commonjs",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist:windows": "electron-builder --win"
   },
   "keywords": [
     "Electron",
@@ -18,5 +19,13 @@
   "devDependencies": {
     "electron": "^21.1.1",
     "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "appId": "de.electronic-minds.app",
+    "productName": "Notifier",
+    "directories": {
+      "buildResources": "build",
+      "output": "release"
+    }
   }
 }
